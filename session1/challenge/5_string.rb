@@ -6,17 +6,15 @@
 
 def add_more_ruby(string)
   string = string.split("")
+  string.each_with_index do |chr, i|
 
-	string.each_with_index do |chr, i|
-
-  	if chr == "s" || chr == "S"
-			 if string[i + 1] == "a" && string[i + 2] == "d"
-				string.slice!(i..(i + 2))
-				chr == "s" ? string.insert(i, "happy") : string.insert(i, "Happy")
-			end
-		end
+    if chr == "s" || chr == "S"
+      if string[i + 1] == "a" && string[i + 2] == "d"
+        string.slice!(i..(i + 2))
+        chr == "s" ? string.insert(i, "happy") : string.insert(i, "Happy")
+      end
+    end
 
   end
-
-	string.join
+  string.join
 end
