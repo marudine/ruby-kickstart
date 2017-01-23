@@ -7,9 +7,7 @@
 def pirates_say_arrrrrrrrr(string)
   arr = []
   string.chars.each_with_index do |r, i|
-    if r == "r" || r == "R"
-      arr << string[i + 1]
-    end
+    arr << string[i + 1] if r == "r" || r == "R"
   end
   arr.compact.join
 end
