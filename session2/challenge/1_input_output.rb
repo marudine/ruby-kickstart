@@ -15,5 +15,4 @@ def sum_difference_product
   p (a + b)
   p (a - b)
   p (a * b)
-
 end
