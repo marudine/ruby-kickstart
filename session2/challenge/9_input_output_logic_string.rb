@@ -24,11 +24,12 @@
 # USER:     BYE
 
 def deaf_grandma
-
+  hi = ""
+  until hi == "BYE"
+    hi = gets.chomp
+    puts hi == hi.upcase ? "NO, NOT SINCE 1938!" : "HUH?! SPEAK UP, SONNY!"
+  end
 end
-
-
-
 
 
 # This will call your code so you can run it from the terminal.
