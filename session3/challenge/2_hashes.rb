@@ -8,3 +8,21 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
+
+def staircase(val)
+
+  h, arr = {}, []
+  (1..val).each do |i|
+    h[i]=[] if i.odd?
+  end
+
+  h.keys.each do |n|
+    arr, e = [], n - 1
+    until e <= 0
+      arr << e
+      e -= 2
+    end
+    h[n] = arr.sort
+  end
+  h
+end
