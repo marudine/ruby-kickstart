@@ -17,3 +17,14 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def match_maker(*t_f)
+  ar = []
+  if t_f.shift == true
+    t_f.each do |xx|
+      t_f.shift(2).one?{|x| x == false || x == nil} ? ar << true : ar << false
+    end
+  else
+    ar << true
+  end
+  ar
+end
