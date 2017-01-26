@@ -25,11 +25,22 @@
 #                      </ol>
 
 class HTMLTag
+
   FONTS = {
     :serif      => '"Times New Roman", "Georgia"',
     :sans_serif => '"Arial", "Verdana"',
     :monospace  => '"Courier New", "Lucida Console"'
-  }
+	}
+
+
+	COLORS = {
+		:red		=> "#FF0000",
+		:green 	=> "#00FF00",
+		:blue		=> "#0000FF"
+	}
+
+
+
 
   attr_accessor :name, :innerHTML, :options
 
@@ -43,13 +54,24 @@ class HTMLTag
     FONTS[font]
   end
 
-  def style
-    return nil unless options[:font]
-    "style='font-family:#{font}'"
+  def color
+    color = options[:color]
+    COLORS[color]
   end
 
+
+  def style
+    if options[:font] && options[:color]
+			"style='color:#{color}font-family:#{font}'"
+		elsif options[:color]
+			"style='color:#{color}'"
+		elsif options[:font]
+			"style='font-family:#{font}'"
+		end
+	end
+
   def to_s
-    line_end = if options[:multiline] then "\n" else "" end
+    line_end = if options[:multiline] then "\n" else "" end  #if true then newline
     "<#{name} #{style}>#{line_end}"  \
     "#{innerHTML.chomp}#{line_end}"  \
     "</#{name}>\n"
