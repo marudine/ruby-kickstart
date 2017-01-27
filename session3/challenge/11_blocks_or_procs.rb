@@ -30,5 +30,10 @@
 # end
 
 
-def array_init
+def array_init(arr = 5, &b)
+  if b == nil
+    Array.new(arr){|i| (100 * i).to_s}
+  else
+    Array.new(arr, &b)
+  end
 end
