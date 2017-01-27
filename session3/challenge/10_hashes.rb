@@ -29,5 +29,31 @@
 # create it from scratch :)
 
 
-def pathify
+def pathify(arr)
+  ar = []
+  ar2 = []
+  1.times do |x|
+    if arr.is_a?(Hash)
+      arr = arr.flatten
+      ar << arr.shift
+    end
+
+    if arr[0].is_a?(Hash)
+      arr = arr.shift
+    elsif arr.is_a?(Array)
+      arr = arr.flatten
+    end
+    if !arr.flatten.include?(Hash)
+      arr.each{|z|ar2 << (ar.clone << z)}
+    end
+  end
+  ar2.flatten
+end
+
+
+
+
+
+
+
 end
