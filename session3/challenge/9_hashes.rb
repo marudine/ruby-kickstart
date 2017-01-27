@@ -29,4 +29,23 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+  hsh = Hash.new
+  last = a & b
+  2.times do |n|
+    a.each.reduce([]) do |m, i|
+      m = []
+      unless hsh.key?(i)
+        m << true unless n == 1 || a.empty?
+        if n == 0
+          b.include?(i) ? m << true : m << nil
+        else
+          a.include?(i) ? m << nil : m << true
+        end
+        m << true if n == 1
+        hsh.store(i, m)
+      end
+    end
+    a, b = b, a
+  end
+  [hsh, last]
 end
