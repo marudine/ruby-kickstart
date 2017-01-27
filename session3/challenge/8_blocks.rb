@@ -26,14 +26,31 @@
 
 
 class Person
-  attr_accessor :name
 
-  def initialize(&initializer)
+  def initialize(*add, &initializer)
     @initializer = initializer
     initializer.call self
+    @add = add
+  end
+
+  @@add = {}
+
+  def quote
+    @@add[:quote]
+  end
+
+  def age
+    @@add[:age]
+  end
+
+  def name
+    @@add[:name]
   end
 
   def reinit
     @initializer.call self
   end
+
+  attr_accessor :name, :age, :quote
+
 end
