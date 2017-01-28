@@ -55,6 +55,4 @@
 def your_sort(arr, &b)
   srt = Proc.new {|a, z| a <=> z}
   b == nil ? arr.sort(&srt) : arr.sort(&b)
-
-  
 end
