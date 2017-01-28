@@ -21,11 +21,36 @@
 # problem_14 2,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => true
 # problem_14 3,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
 
-def problem_14
+def problem_14(*arr)
+  if arr!.include?(Hash)
+    count_clumps(arr)
+  else
+    if arr[0].is_a?(Array)
+      arr1 = arr[0]
+      hsh = arr[1].values
+    else
+      arr1 = arr[1]
+      hsh = arr[0].values
+    end
+    same_ends(arr1)
+  end
 end
 
-def same_ends
+def same_ends(n, arr1)
+  arr1.take(n) == arr1[-n..-1]
 end
 
-def count_clumps
+def count_clumps(arr1)
+  cnt = 0
+  return 1 if arr1.all?{|x| x == arr1[0]}
+  arr1.each_with_index do |i, ix|
+    if i == arr1[ix + 1]
+      if ix - 1 == -1
+        cnt = 1
+      elsif i != arr1[ix - 1]
+        cnt += 1
+      end
+    end
+  end
+  cnt
 end
