@@ -52,5 +52,9 @@
 #   end
 # end       # => ["a", "m", "r", 1, 3, 4, 9, 2.5, 9.0, 25.8]
 
-def your_sort
+def your_sort(arr, &b)
+  srt = Proc.new {|a, z| a <=> z}
+  b == nil ? arr.sort(&srt) : arr.sort(&b)
+
+  
 end
