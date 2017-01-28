@@ -7,3 +7,9 @@
 #
 # print_list_in_reverse head   # >> "1\n2\n"
 
+def print_list_in_reverse(head)
+  x = head.values.first
+  x.times do |i|
+    puts i + 1
+  end
+end
