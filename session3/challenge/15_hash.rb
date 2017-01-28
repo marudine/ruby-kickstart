@@ -38,3 +38,8 @@
 # middle head                        # => 3
 # head = {:data => 6, :next => head}
 # middle head                        # => 3
+
+
+def middle(list)
+  (list.values.first.to_f / 2).ceil
+end
