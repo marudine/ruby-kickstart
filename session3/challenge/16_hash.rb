@@ -15,3 +15,11 @@
 # head = {:data => 6, :next => head}
 # print_list head                    # >> "6\n5\n4\n3\n2\n1\n"
 
+def print_list(head)
+  x = head.values.first
+  y = x
+  x.times do |i|
+    puts y
+    y -= 1
+  end
+end
